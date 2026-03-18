@@ -6,7 +6,7 @@ namespace WhatsATooltip;
 
 /// <summary>
 /// Immediate-mode rich tooltip renderer using ImGui DrawList inside BeginTooltip/EndTooltip.
-/// Zero-allocation static API — call only when IsItemHovered() is true.
+/// Zero-allocation static API  - call only when IsItemHovered() is true.
 /// All parameters are primitives/IntPtr so delegates cross PluginBridge safely.
 /// </summary>
 public static class RichTooltip
@@ -71,7 +71,7 @@ public static class RichTooltip
         float totalH = _currentY - ImGui.GetWindowPos().Y + Pad;
         float totalW = _maxWidth + Pad * 2;
 
-        // Redraw only the border at the correct size — the background was already
+        // Redraw only the border at the correct size  - the background was already
         // drawn oversized in Begin(). We must NOT AddRectFilled here because it
         // would cover all content drawn between Begin() and End().
         var winPos = ImGui.GetWindowPos();

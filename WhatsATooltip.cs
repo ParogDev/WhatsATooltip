@@ -7,7 +7,7 @@ public class WhatsATooltip : BaseSettingsPlugin<WhatsATooltipSettings>
 {
     public override bool Initialise()
     {
-        // Register all rendering methods on PluginBridge — "PluginName.MethodName" convention.
+        // Register all rendering methods on PluginBridge  - "PluginName.MethodName" convention.
         // Delegate types use only primitives/IntPtr so they cross assembly boundaries safely.
 
         GameController.PluginBridge.SaveMethod("WhatsATooltip.Begin",
