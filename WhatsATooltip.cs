@@ -7,6 +7,7 @@ public class WhatsATooltip : BaseSettingsPlugin<WhatsATooltipSettings>
 {
     public override bool Initialise()
     {
+        Name = "Whats A Tooltip";
         // Register all rendering methods on PluginBridge  - "PluginName.MethodName" convention.
         // Delegate types use only primitives/IntPtr so they cross assembly boundaries safely.
 
