@@ -25,4 +25,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="SharpDX.Mathematics" Version="4.2.0" />
   </ItemGroup>
+  <ItemGroup>
+    <!-- Hexile.BridgeExports source generator: [BridgeExport] -> BridgeExports.Register / BridgeExports.Names at compile time.
+         Vendored (built from the scaffolding repo's tools/generators) so this repo builds on its own. -->
+    <Analyzer Include="Analyzers\Hexile.BridgeExports.Generator.dll" />
+  </ItemGroup>
 </Project>
