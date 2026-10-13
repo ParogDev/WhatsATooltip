@@ -10,7 +10,7 @@ WhatsATooltip is a shared tooltip rendering service for the WhatsA* plugin famil
 
 ### Architecture
 
-WhatsATooltip is a "service plugin" — it has no Tick/Render loop of its own. In `Initialise()`, it registers all `RichTooltip` static methods on `PluginBridge` using the `"WhatsATooltip.MethodName"` convention. Consumer plugins (e.g., WhatsACrowdControl, WhatsAMirage) resolve these delegates once via `PluginBridge.GetMethod<T>()` and call them during their own ImGui rendering passes.
+WhatsATooltip is a "service plugin" — it has no Tick/Render loop of its own. Each exported `RichTooltip` static method carries `[BridgeExport("WhatsATooltip.MethodName")]`; `Initialise()` calls `BridgeExports.Register(this, GameController.PluginBridge)` (BridgeExports.cs, a per-plugin copy like HudLog.cs), which saves each on `PluginBridge` as the `Func<>`/`Action<>` its signature gives. Consumer plugins (e.g., WhatsACrowdControl, WhatsAMirage) resolve these delegates once via `PluginBridge.GetMethod<T>()` and call them during their own ImGui rendering passes.
 
 All bridge delegate signatures use only primitives, strings, string arrays, and `IntPtr` — no custom structs cross the assembly boundary.
 
