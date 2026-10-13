@@ -31,6 +31,7 @@ public static class RichTooltip
     /// <summary>
     /// Begin a rich tooltip. Call only when ImGui.IsItemHovered() is true.
     /// </summary>
+    [BridgeExport("WhatsATooltip.Begin")]
     public static bool Begin(uint accent, uint accentDim, uint label, uint desc, uint cardBg, float maxWidth)
     {
         _accent = accent;
@@ -64,6 +65,7 @@ public static class RichTooltip
     /// <summary>
     /// End the rich tooltip. Must match a Begin() call.
     /// </summary>
+    [BridgeExport("WhatsATooltip.End")]
     public static void End()
     {
         if (!_isOpen) return;
@@ -93,6 +95,7 @@ public static class RichTooltip
     /// <summary>
     /// Draw a header with optional icon and accent-colored title text.
     /// </summary>
+    [BridgeExport("WhatsATooltip.Header")]
     public static void Header(string text, IntPtr iconTexId, float iconSize)
     {
         if (!_isOpen) return;
@@ -123,6 +126,7 @@ public static class RichTooltip
     /// <summary>
     /// Draw a pill-shaped colored badge (e.g. tier name).
     /// </summary>
+    [BridgeExport("WhatsATooltip.Badge")]
     public static void Badge(string text, uint color)
     {
         if (!_isOpen) return;
@@ -142,6 +146,7 @@ public static class RichTooltip
     /// <summary>
     /// Draw a horizontal separator line.
     /// </summary>
+    [BridgeExport("WhatsATooltip.Separator")]
     public static void Separator()
     {
         if (!_isOpen) return;
@@ -157,6 +162,7 @@ public static class RichTooltip
     /// <summary>
     /// Draw a stat line: label on the left, value right-aligned.
     /// </summary>
+    [BridgeExport("WhatsATooltip.StatLine")]
     public static void StatLine(string label, string value, uint valueColor)
     {
         if (!_isOpen) return;
@@ -173,6 +179,7 @@ public static class RichTooltip
     /// <summary>
     /// Draw word-wrapped body text in subdued color.
     /// </summary>
+    [BridgeExport("WhatsATooltip.Body")]
     public static void Body(string text)
     {
         if (!_isOpen) return;
@@ -182,6 +189,7 @@ public static class RichTooltip
     /// <summary>
     /// Draw word-wrapped body text in label (bright) color.
     /// </summary>
+    [BridgeExport("WhatsATooltip.BodyBright")]
     public static void BodyBright(string text)
     {
         if (!_isOpen) return;
@@ -191,6 +199,7 @@ public static class RichTooltip
     /// <summary>
     /// Draw a bullet point: small circle + indented text.
     /// </summary>
+    [BridgeExport("WhatsATooltip.Bullet")]
     public static void Bullet(string text, uint dotColor)
     {
         if (!_isOpen) return;
@@ -209,6 +218,7 @@ public static class RichTooltip
     /// <summary>
     /// Full tooltip for a CrowdControl entry: icon, name, tier badge, tracked buff names.
     /// </summary>
+    [BridgeExport("WhatsATooltip.ForCcEntry")]
     public static void ForCcEntry(string name, string tier, string[] buffNames,
         IntPtr iconTexId, uint tierColor,
         uint accent, uint accentDim, uint label, uint desc, uint cardBg)
@@ -232,6 +242,7 @@ public static class RichTooltip
     /// <summary>
     /// Full tooltip for a live buff entry: internal name, display name, timer, tracking status.
     /// </summary>
+    [BridgeExport("WhatsATooltip.ForLiveBuff")]
     public static void ForLiveBuff(string internalName, string displayName,
         float timer, int charges, bool isTracked,
         uint accent, uint accentDim, uint label, uint desc, uint cardBg)
