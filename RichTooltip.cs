@@ -1,6 +1,6 @@
 using System;
 using System.Numerics;
-using ImGuiNET;
+using Hexa.NET.ImGui;
 
 namespace WhatsATooltip;
 
@@ -56,7 +56,7 @@ public static class RichTooltip
         // Draw card background (overdrawn at correct size in End)
         var bgMax = new Vector2(winPos.X + maxWidth + Pad * 2, winPos.Y + 600);
         _dl.AddRectFilled(winPos, bgMax, cardBg, 4f);
-        _dl.AddRect(winPos, bgMax, WithAlpha(accent, 0.35f), 4f, ImDrawFlags.None, 1f);
+        _dl.AddRect(winPos, bgMax, WithAlpha(accent, 0.35f), 4f, 1f, ImDrawFlags.None);
 
         _isOpen = true;
         return true;
@@ -78,7 +78,7 @@ public static class RichTooltip
         // would cover all content drawn between Begin() and End().
         var winPos = ImGui.GetWindowPos();
         _dl.AddRect(winPos, new Vector2(winPos.X + totalW, winPos.Y + totalH),
-            WithAlpha(_accent, 0.35f), 4f, ImDrawFlags.None, 1f);
+            WithAlpha(_accent, 0.35f), 4f, 1f, ImDrawFlags.None);
 
         ImGui.SetCursorScreenPos(winPos);
         ImGui.Dummy(new Vector2(totalW, totalH));
@@ -106,7 +106,7 @@ public static class RichTooltip
         {
             var iconMin = new Vector2(_contentX, _currentY);
             var iconMax = new Vector2(_contentX + iconSize, _currentY + iconSize);
-            _dl.AddImage(iconTexId, iconMin, iconMax);
+            _dl.AddImage(new ImTextureRef { TexID = iconTexId }, iconMin, iconMax);
             textX = _contentX + iconSize + 6f;
         }
 
@@ -137,7 +137,7 @@ public static class RichTooltip
         var max = new Vector2(_contentX + textSize.X + padX * 2, _currentY + textSize.Y + padY * 2);
 
         _dl.AddRectFilled(min, max, WithAlpha(color, 0.2f), 8f);
-        _dl.AddRect(min, max, WithAlpha(color, 0.5f), 8f, ImDrawFlags.None, 1f);
+        _dl.AddRect(min, max, WithAlpha(color, 0.5f), 8f, 1f, ImDrawFlags.None);
         _dl.AddText(new Vector2(min.X + padX, min.Y + padY), color, text);
 
         _currentY = max.Y + LineGap + 2f;
